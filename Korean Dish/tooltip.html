@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Tooltip Example</title>
+	<link rel="stylesheet" href="tooltip.css">
+</head>
+<body>
+<h1>Korean Sidedish Primer</h1>
+
+<div id="wrapper">
+  
+
+   <img width="1000" height="672" src="koreanDish.png" alt="World continents">   
+       <!-- First row -->
+       <div class="pin pin-down" data-xpos="100" data-ypos="120">     
+          <h2>Seasoned Aster</h2>     
+          <ul>
+            <li>Korean name: Chwi Namool (취나물)</li>
+            <li>Seasoning: Salt, sesame oil, garlic </li>
+          </ul>
+       </div>
+
+      <div class="pin pin-down" data-xpos="300" data-ypos="120">     
+          <h2>Spicy Fishcake</h2>     
+          <ul>
+            <li>Korean name: MaeWoon Umook Bookum(매운 어묵 볶음)</li>
+            <li>Seasoning: Red pepper, Soysauce, sesame oil, Sesame oil, garlic </li>
+          </ul>
+       </div>
+
+       <div class="pin pin-down" data-xpos="550" data-ypos="140">     
+          <h2>Cucumber Salad </h2>     
+          <ul>
+            <li>Korean name: Oi Mucim (오이무침)</li>
+            <li>Seasoning: Salt, sesame oil, garlic </li>
+          </ul>
+       </div>
+
+       <div class="pin pin-down" data-xpos="650" data-ypos="120">     
+          <h2>Cabbage Salad</h2>     
+          <ul>
+            <li>Korean name: Baechu Geotjeoli (배추겉절이)</li>
+            <li>Seasoning: Red pepper, Salt, sesame oil, garlic </li>
+          </ul>
+       </div>
+
+       <div class="pin pin-down" data-xpos="780" data-ypos="120">     
+          <h2>Seasoned Zucchini</h2>     
+          <ul>
+            <li>Korean name: Hobak Namool (호박나물)</li>
+            <li>Seasoning: Salt, Garlic, Permented shrimp paste </li>
+          </ul>
+       </div>
+
+
+
+       <!-- Second row -->
+       <div class="pin pin-up" data-xpos="100" data-ypos="450">     
+          <h2>Bellflower Roots</h2>     
+          <ul>
+            <li>Korean name: Doraji Namul (도라지나물)</li>
+            <li>Seasoning: Salt, sesame oil, garlic </li>
+          </ul>
+       </div>
+
+        <div class="pin pin-up" data-xpos="300" data-ypos="450">     
+          <h2>Mushroom Salad</h2>     
+          <ul>
+            <li>Korean name: Busot Moochim (버섯무침)</li>
+            <li>Seasoning: Salt, sesame oil, garlic </li>
+          </ul>
+       </div>
+
+       <div class="pin pin-up" data-xpos="450" data-ypos="550">     
+          <h2>Grilled Tofu</h2>     
+          <ul>
+            <li>Korean name: Doboo Gui (두부구이)</li>
+            <li>Seasoning: Salt, sesame oil, garlic </li>
+          </ul>
+       </div>
+
+       <div class="pin pin-up" data-xpos="650" data-ypos="450">     
+          <h2>Seasoned Seeweed</h2>     
+          <ul>
+            <li>Korean name: Tot Namul (톳나물)</li>
+            <li>Seasoning: Salt, sesame oil, garlic </li>
+          </ul>
+       </div>
+
+        <div class="pin pin-up" data-xpos="850" data-ypos="400">     
+          <h2>Stirfried Anchovy</h2>     
+          <ul>
+            <li>Korean name: Myul Chi Bokum (멸치볶음)</li>
+            <li>Seasoning: Salt, sesame oil, garlic </li>
+          </ul>
+       </div>
+
+        <!-- Center item -->
+
+         <div class="pin pin-up" data-xpos="550" data-ypos="200">     
+          <h2>Seasoned Spinach</h2>     
+          <ul>
+            <li>Korean name: Shigumchi Namul (시금치나물)</li>
+            <li>Seasoning: Salt, sesame oil, garlic </li>
+          </ul>
+       </div>
+
+
+</div>
+
+
+
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<!-- <script src="tooltip.js" type="text/javascript"></script> -->
+
+<script>
+$(document).ready(function(){
+
+// set the wrapper width and height to match the img size
+$('#wrapper').css({'width':$('#wrapper img').width(),
+                  'height':$('#wrapper img').height()
+})
+
+//tooltip direction
+var tooltipDirection;
+             
+for (i=0; i<$(".pin").length; i++)
+{               
+    // set tooltip direction type - up or down             
+    if ($(".pin").eq(i).hasClass('pin-down')) {
+        tooltipDirection = 'tooltip-down';
+    } else {
+        tooltipDirection = 'tooltip-up';
+        }
+
+    // append the tooltip
+    $("#wrapper").append("<div style='left:"+$(".pin").eq(i).data('xpos')+"px;top:"+$(".pin").eq(i).data('ypos')+"px' class='" + tooltipDirection +"'>\
+                                        <div class='tooltip'>" + $(".pin").eq(i).html() + "</div>\
+                                </div>");
+}    
+
+// show/hide the tooltip
+$('.tooltip-up, .tooltip-down').mouseenter(function(){
+            $(this).children('.tooltip').fadeIn(100);
+        }).mouseleave(function(){
+            $(this).children('.tooltip').fadeOut(100);
+        })
+});
+
+
+</script>
+
+</body>
+</html>
